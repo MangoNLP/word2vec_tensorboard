@@ -1,9 +1,11 @@
 # Word2Vec 구현 #  
 #### 순서 ####  
-```python
+```bash
 # 라이브러리 설치  
 pip -r requirements.txt  
-  
+
+# data.txt.zip 압축 해제
+
 # 실행  
 python3 word2vec.py  
 
