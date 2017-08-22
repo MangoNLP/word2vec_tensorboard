@@ -10,9 +10,12 @@ import multiprocessing
 from tensorflow.contrib.tensorboard.plugins import projector
 from gensim.models import word2vec
 from konlpy.corpus import kobill
-from konlpy.tag import Mecab
+from konlpy.tag import Mecab, Kkma
 
-tag = Mecab()
+try:
+    tag = Mecab()
+except:
+    tag = Kkma()
 
 fname = 'ko_word2vec.model'
 
