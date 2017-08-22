@@ -23,8 +23,9 @@ tensorboard --logdir=projector
 학습 시 형태소 분석, 단어 리스트가 꽤 커서 파일로 캐싱시킴.  
 새로운 학습이 시작되야 한다면(데이터가 변경된 경우),  
 **\*.pk 파일을 삭제**하도록 한다.  
-docs_ko.pk : 단어 리스트  
-texts_ko.pk : 태깅 리스트  
-ko_word2vec.model : 벡터화 파일  
-projector 디렉터리 : 텐서보드용 프로젝터 파일  
 
+##### 생성 파일  
+- docs_ko.pk : 단어 리스트  
+- texts_ko.pk : 태깅 리스트  
+- ko_word2vec.model : 벡터화 파일  
+- projector 디렉터리 : 텐서보드용 프로젝터 파일  
