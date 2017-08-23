@@ -5,17 +5,18 @@ import pickle
 import os
 import numpy as np
 import multiprocessing
+import codecs
 
 # import matplotlib.pyplot as plt
 from tensorflow.contrib.tensorboard.plugins import projector
 from gensim.models import word2vec
 from konlpy.corpus import kobill
-from konlpy.tag import Mecab, Kkma
+from konlpy.tag import Mecab, Twitter
 
 try:
     tag = Mecab()
 except:
-    tag = Kkma()
+    tag = Twitter()
 
 fname = 'ko_word2vec.model'
 
@@ -35,7 +36,7 @@ def arg_parser():
 
 
 def get_line(filePath):
-    with open(filePath) as f:
+    with codecs.open(filePath, 'r', 'utf8') as f:
         for line in f.readlines():
             yield line
 
@@ -90,10 +91,10 @@ if __name__ == '__main__':
         vocab = wv_model_ko.wv.vocab
         num_w2v = len(wv_model_ko.wv.index2word)
         w2v = np.zeros((num_w2v, 100))
-        with open("metadata.tsv", 'w+') as file_metadata:
+        with open("metadata.tsv", 'wb+') as file_metadata:
             for i, word in enumerate(wv_model_ko.wv.index2word):
                 w2v[i] = wv_model_ko[word]
-                file_metadata.write(word + '\n')
+                file_metadata.write((word + '\n').encode('utf8'))
         # setup a TensorFlow session
         tf.reset_default_graph()
         sess = tf.InteractiveSession()
